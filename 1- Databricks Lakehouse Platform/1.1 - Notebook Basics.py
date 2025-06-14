@@ -1,10 +1,34 @@
 # Databricks notebook source
 print("Hello World!")
 
+
 # COMMAND ----------
 
-# MAGIC %sql
+# MAGIC %md
+# MAGIC ### %run: runs a Python file or a notebook.
+# MAGIC ### %sh: executes shell commands on the cluster nodes.
+# MAGIC ### %fs: allows you to interact with the Databricks file system.
+# MAGIC ### %sql: allows you to run SQL queries.
+# MAGIC ### %scala: switches the notebook context to Scala.
+# MAGIC ### %python: switches the notebook context to Python.
+# MAGIC ### %md: allows you to write markdown text.
+# MAGIC ### %r: switches the notebook context to R.
+# MAGIC ### %lsmagic: lists all the available magic commands.
+# MAGIC ### %jobs: lists all the running jobs.
+# MAGIC ### %config: allows you to set configuration options for the notebook.
+# MAGIC ### %reload: reloads the contents of a module.
+# MAGIC ### %pip: allows you to install Python packages.
+# MAGIC ### %load: loads the contents of a file into a cell.
+# MAGIC ### %matplotlib: sets up the matplotlib backend.
+# MAGIC ### %who: lists all the variables in the current scope.
+# MAGIC ### %env: allows you to set environment variables.
+
+# COMMAND ----------
+
+# MAGIC %sql 
 # MAGIC SELECT "Hello world from SQL!"
+# MAGIC
+# MAGIC
 
 # COMMAND ----------
 
@@ -41,6 +65,13 @@ print("Hello World!")
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ### Running setup notebook through %run magic command
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC
 # MAGIC %run ../Includes/Setup
 
 # COMMAND ----------
@@ -49,7 +80,7 @@ print(full_name)
 
 # COMMAND ----------
 
-# MAGIC %fs ls '/databricks-datasets'
+# MAGIC %fs ls '/databricks-datasets/'
 
 # COMMAND ----------
 

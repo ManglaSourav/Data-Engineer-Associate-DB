@@ -5,7 +5,7 @@
 
 -- COMMAND ----------
 
-USE CATALOG hive_metastore
+USE CATALOG test_catelog
 
 -- COMMAND ----------
 
@@ -13,6 +13,7 @@ DESCRIBE HISTORY employees
 
 -- COMMAND ----------
 
+-- Time travel
 SELECT * 
 FROM employees VERSION AS OF 4
 
@@ -30,7 +31,7 @@ SELECT * FROM employees
 
 -- COMMAND ----------
 
-RESTORE TABLE employees TO VERSION AS OF 5
+RESTORE TABLE employees TO VERSION AS OF 6
 
 -- COMMAND ----------
 
@@ -56,6 +57,8 @@ OPTIMIZE employees
 ZORDER BY id
 
 -- COMMAND ----------
+
+-- Now we will see only one file in numFiles
 
 DESCRIBE DETAIL employees
 
@@ -87,7 +90,11 @@ VACUUM employees RETAIN 0 HOURS
 
 -- COMMAND ----------
 
-SET spark.databricks.delta.retentionDurationCheck.enabled = false;
+SET spark.databricks.delta.retentionDurationCheck.enabled = false; -- This setting cannot be changed via SQL, set it at the cluster or Spark session configuration level.
+
+-- COMMAND ----------
+
+-- MAGIC %sql VACUUM employees RETAIN 192 hours
 
 -- COMMAND ----------
 

@@ -4,9 +4,9 @@
 
 -- COMMAND ----------
 
-USE CATALOG hive_metastore;
+USE CATALOG test_catelog;
 
-CREATE TABLE managed_default
+CREATE TABLE IF NOT EXISTS managed_default
   (width INT, length INT, height INT);
 
 INSERT INTO managed_default
@@ -24,12 +24,20 @@ DESCRIBE EXTENDED managed_default
 
 -- COMMAND ----------
 
-CREATE TABLE external_default
+CREATE TABLE test_catelog.default.external_default
   (width INT, length INT, height INT)
 LOCATION 'dbfs:/mnt/demo/external_default';
-  
-INSERT INTO external_default
-VALUES (3 INT, 2 INT, 1 INT)
+
+INSERT INTO test_catelog.default.external_default
+VALUES (3, 2, 1)
+
+-- COMMAND ----------
+
+-- create schema test1;
+
+-- COMMAND ----------
+
+
 
 -- COMMAND ----------
 
@@ -122,7 +130,7 @@ LOCATION 'dbfs:/Shared/schemas/custom.db'
 
 -- COMMAND ----------
 
-DESCRIBE DATABASE EXTENDED custom
+DESCRIBE DATABASE EXTENDED test1
 
 -- COMMAND ----------
 

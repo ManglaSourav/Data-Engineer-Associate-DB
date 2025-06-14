@@ -4,11 +4,11 @@
 
 -- COMMAND ----------
 
-USE CATALOG hive_metastore
+  USE CATALOG test_catelog
 
 -- COMMAND ----------
 
-CREATE TABLE employees
+CREATE TABLE IF NOT EXISTS employees
   (id INT, name STRING, salary DOUBLE);
 
 -- COMMAND ----------
@@ -60,7 +60,14 @@ SELECT * FROM employees
 
 -- COMMAND ----------
 
+DESCRIBE history employees
+
+
+-- COMMAND ----------
+
 DESCRIBE DETAIL employees
+
+-- replace detial EXTENDED
 
 -- COMMAND ----------
 
@@ -69,7 +76,14 @@ DESCRIBE DETAIL employees
 
 -- COMMAND ----------
 
--- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
+
+-- %sql
+-- SET spark.databricks.delta.formatCheck.enabled=false
+
+-- COMMAND ----------
+
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees/_delta_log'
+-- MAGIC
 
 -- COMMAND ----------
 
@@ -88,7 +102,7 @@ SELECT * FROM employees
 
 -- COMMAND ----------
 
--- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
+-- MAGIC %fs ls 'dbfs:/databricks-datasets/'
 
 -- COMMAND ----------
 
